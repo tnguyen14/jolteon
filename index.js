@@ -10,23 +10,22 @@ const verifyToken = process.env.VERIFY_TOKEN;
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/webhook/', function (req, res) {
+app.get('/webhook/', (req, res) => {
 	if (req.query['hub.verify_token'] === verifyToken) {
 		return res.send(req.query['hub.challenge']);
 	}
 	res.send('Error, wrong validation token');
 });
 
-app.post('/webhook/', function (req, res) {
-	const messaging_events = req.body.entry[0].messaging;
-	for (let i = 0; i < messaging_events.length; i++) {
-		let event = req.body.entry[0].messaging[i];
-		let sender = event.sender.id;
+app.post('/webhook/', (req, res) => {
+	const messagingEvents = req.body.entry[0].messaging;
+	messagingEvents.forEach((event) => {
+		const sender = event.sender.id;
 		if (event.message && event.message.text) {
-			let text = event.message.text;
+			const text = event.message.text;
 			sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200));
 		}
-	}
+	});
 	res.sendStatus(200);
 });
 
