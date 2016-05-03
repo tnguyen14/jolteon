@@ -9,7 +9,7 @@ const verifyToken = process.env.VERIFY_TOKEN;
 
 app.get('/webhook/', function (req, res) {
 	if (req.query['hub.verify_token'] === verifyToken) {
-		res.send(req.query['hub.challenge']);
+		return res.send(req.query['hub.challenge']);
 	}
 	res.send('Error, wrong validation token');
 });
