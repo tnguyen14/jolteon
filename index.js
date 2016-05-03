@@ -31,24 +31,24 @@ app.post('/webhook/', function (req, res) {
 });
 
 function sendTextMessage (sender, text) {
-	const messageData = {
-		text: text
-	};
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: pageToken},
-		method: 'POST',
-		json: {
-			recipient: {id: sender},
-			message: messageData
-		}
-	}, function (error, response, body) {
-		if (error) {
-			console.log('Error sending message: ', error);
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error);
-		}
-	});
+	request.post('https://graph.facebook.com/v2.6/me/messages')
+		.set('Host', process.env.HOST || 'localhost')
+		.query({access_token: pageToken})
+		.send({
+			recipient: {
+				id: sender
+			},
+			message: {
+				text: text
+			}
+		})
+		.end((error, response, body) => {
+			if (error) {
+				console.log('Error sending message: ', error);
+			} else if (response.body.error) {
+				console.log('Error: ', response.body.error);
+			}
+		});
 }
 
 app.listen(process.env.PORT || 3000);
