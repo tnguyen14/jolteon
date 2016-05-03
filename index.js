@@ -2,10 +2,13 @@
 
 const express = require('express');
 const request = require('superagent');
+const bodyParser = require('body-parser');
 
-const app = express();
 const pageToken = process.env.PAGE_TOKEN;
 const verifyToken = process.env.VERIFY_TOKEN;
+
+const app = express();
+app.use(bodyParser.json());
 
 app.get('/webhook/', function (req, res) {
 	if (req.query['hub.verify_token'] === verifyToken) {

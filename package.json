@@ -9,6 +9,7 @@
   "author": "Tri Nguyen",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "dotenv-safe": "^2.3.1",
     "express": "^4.13.4",
     "superagent": "^1.8.3"
