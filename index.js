@@ -1,5 +1,5 @@
-import express from 'express';
-import request from 'superagent';
+const express = require('express');
+const request = require('superagent');
 
 const app = express();
 const pageToken = process.env.PAGE_TOKEN;
