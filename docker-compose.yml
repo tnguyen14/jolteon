@@ -1,0 +1,7 @@
+version: '2'
+services:
+  sg-messenger:
+    build: .
+    ports:
+     - "14012:3000"
+
