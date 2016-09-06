@@ -17,10 +17,10 @@ module.exports = function (sender, text, cb) {
 		}
 	}, function (error, response, body) {
 		if (error) {
-			console.log('Error sending message: ', error);
+			console.error('Error sending message: ', error);
 			cb(error);
 		} else if (response.body.error) {
-			console.log('Error: ', response.body.error);
+			console.error('Error: ', response.body.error);
 			cb(response.body.error);
 		} else {
 			cb(null, body);
