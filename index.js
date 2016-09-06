@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv-safe').load();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const debug = require('debug')('sg-messenger');

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv-safe/config index.js"
+    "start": "node index.js"
   },
   "author": "Tri Nguyen",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "request": "^2.72.0"
   },
   "devDependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "nodemon": "^1.10.2"
   }
 }
