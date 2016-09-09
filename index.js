@@ -4,7 +4,7 @@ require('dotenv-safe').load();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const debug = require('debug')('sg-messenger');
+const debug = require('debug')('fb-messenger');
 const async = require('async');
 const send = require('./send');
 const verifyToken = process.env.VERIFY_TOKEN;
