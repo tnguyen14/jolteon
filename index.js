@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv-safe').load();
+require('dotenv').load();
 
 const express = require('express');
 const bodyParser = require('body-parser');
