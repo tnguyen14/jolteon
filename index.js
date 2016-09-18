@@ -4,7 +4,7 @@ require('dotenv').load();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const debug = require('debug')('fb-messenger');
+const debug = require('debug')('jolteon');
 const async = require('async');
 const send = require('./send');
 const verifyToken = process.env.VERIFY_TOKEN;
@@ -24,7 +24,7 @@ app.post('/webhook/', (req, res) => {
 	async.eachSeries(messagingEvents, (event, cb) => {
 		const sender = event.sender.id;
 		if (event.message && event.message.text) {
-			debug('Received message: %s', event.message.text);
+			debug('Received message: %s from sender: %s', event.message.text, sender);
 			const text = event.message.text;
 			send(sender, 'Text received, echo: ' + text.substring(0, 200), cb);
 		} else {
