@@ -2,7 +2,7 @@ const request = require('request');
 
 module.exports = function (sender, text, cb) {
 	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
+		url: 'https://graph.facebook.com/v2.7/me/messages',
 		method: 'POST',
 		qs: {
 			access_token: process.env.PAGE_TOKEN
